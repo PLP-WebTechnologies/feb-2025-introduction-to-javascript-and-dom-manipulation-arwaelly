@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript DOM Manipulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 id="main-heading">Welcome to JavaScript DOM Practice</h1>
+  </header>
+
+  <main>
+    <section>
+      <p id="intro-text">This is a simple page to demonstrate DOM manipulation.</p>
+      <button id="change-text-btn">Change Text</button>
+    </section>
+
+    <section>
+      <p id="color-box">Click the button to change my color.</p>
+      <button id="change-color-btn">Change Color</button>
+    </section>
+
+    <section>
+      <ul id="item-list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+      <button id="add-item-btn">Add Item</button>
+      <button id="remove-item-btn">Remove Last Item</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DOM Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+// Javascript file
+// Change text content
+document.getElementById("change-text-btn").addEventListener("click", function () {
+  document.getElementById("intro-text").textContent = "The text has been updated dynamically using JavaScript!";
+});
+
+// Change CSS style dynamically
+document.getElementById("change-color-btn").addEventListener("click", function () {
+  const box = document.getElementById("color-box");
+  box.style.backgroundColor = "#f0ad4e";
+  box.style.color = "#fff";
+  box.style.padding = "10px";
+  box.style.borderRadius = "5px";
+});
+
+// Add and remove elements
+const itemList = document.getElementById("item-list");
+
+document.getElementById("add-item-btn").addEventListener("click", function () {
+  const newItem = document.createElement("li");
+  newItem.textContent = `Item ${itemList.children.length + 1}`;
+  itemList.appendChild(newItem);
+});
+
+document.getElementById("remove-item-btn").addEventListener("click", function () {
+  if (itemList.children.length > 0) {
+    itemList.removeChild(itemList.lastElementChild);
+  }
+});
